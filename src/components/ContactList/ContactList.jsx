@@ -7,16 +7,17 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   };
 
   return (
-    <ul style={{display: "flex", flexDirection: "column", gap: 10, justifyContent: "space-between"}}>
-      {contacts.map(contact => (
-        <li key={contact.id} style={{fontSize: 16 }}>
+    <ul style={{ display: "flex", flexDirection: "column", gap: 10, justifyContent: "space-between" }}>
+      {contacts && contacts.map(contact => (
+        <li key={contact.id} style={{ fontSize: 16 }}>
           {contact.name}: {contact.number}
-          <button style={{marginLeft: 30}} onClick={() => handleDeleteClick(contact.id)}>Delete Contact</button>
+          <button style={{ marginLeft: 30 }} onClick={() => handleDeleteClick(contact.id)}>Delete Contact</button>
         </li>
       ))}
     </ul>
   );
 };
+
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -25,7 +26,7 @@ ContactList.propTypes = {
       number: PropTypes.string.isRequired
     })
   ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired
+  onDeleteContact: PropTypes.func
 };
 
 export default ContactList;
