@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import FilterContact from "./FilterContact/FilterContact";
 
-import { addNewContact } from "../redux/actions";
+import { addNewContact, deleteContact } from "../redux/actions";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,19 +26,22 @@ const App = () => {
     dispatch(addNewContact({ name: contact.name, phone: contact.phone, id: contact.id }));
   };
 
+  const handleDeleteContact = (id) => {
+    dispatch(deleteContact(id));
+  };
+
   const handleFilterChange = (filterValue) => {
     setFilter(filterValue.toLowerCase());
   };
 
-  useEffect(() => {
-    const storedContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(storedContacts);
+  // useEffect(() => {
+  //   const storedContacts = localStorage.getItem('contacts');
+  //   const parsedContacts = JSON.parse(storedContacts);
 
-    if (parsedContacts) {
-      // setContacts(parsedContacts);
-      // Remove the setContacts call as it is not defined
-    }
-  }, []);
+  //   if (parsedContacts) {
+  //     setContacts(parsedContacts);
+  //   }
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -74,7 +77,7 @@ const App = () => {
         onFilterChange={handleFilterChange}
       />
 
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={filteredContacts}  onDeleteContact={handleDeleteContact}/>
     </div>
   );
 }

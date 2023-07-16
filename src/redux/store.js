@@ -6,10 +6,7 @@ const rootReducer = combineReducers({
     contacts: contactReducer,
 });
 
-
 const enhancer = devToolsEnhancer();
-
 const store = createStore(rootReducer, enhancer);
-
 
 export default store;
