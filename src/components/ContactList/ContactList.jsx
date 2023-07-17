@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// import PhonebookTitle from "../PhonebookTitle/PhonebookTitle";
-
 const ContactList = ({ contacts, onDeleteContact }) => {
   const handleDeleteClick = (id) => {
     onDeleteContact(id);
