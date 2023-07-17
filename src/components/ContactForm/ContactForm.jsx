@@ -1,28 +1,21 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import PhonebookTitle from "../PhonebookTitle/PhonebookTitle";
 import { nanoid } from "nanoid";
 import AddContactButton from "components/AddContactButton/AddContactButton";
 
 const ContactForm = ({ onAddContact }) => {
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      
-      case 'number':
-        setNumber(value);
-        break;
-
-      default:
-        break;
+    if (name === 'name') {
+      setName(value);
+    } else if (name === 'number') {
+      setNumber(value);
     }
   };
 
@@ -38,7 +31,6 @@ const ContactForm = ({ onAddContact }) => {
     onAddContact(contact)
     setName('');
     setNumber('');
-
   }
 
   return (

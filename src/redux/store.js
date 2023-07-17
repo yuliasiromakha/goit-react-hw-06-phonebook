@@ -3,7 +3,7 @@ import { devToolsEnhancer } from "@redux-devtools/extension";
 import contactReducer from "./reducer";
 
 const rootReducer = combineReducers({
-    contacts: contactReducer,
+  contacts: contactReducer,
 });
 
 const enhancer = devToolsEnhancer();

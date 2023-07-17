@@ -24,5 +24,4 @@ FilterContact.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
 };
 
-
 export default FilterContact;

@@ -1,20 +1,19 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import './general.css'
+
 import PhonebookTitle from "./PhonebookTitle/PhonebookTitle";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import FilterContact from "./FilterContact/FilterContact";
 
-import { addNewContact, deleteContact } from "../redux/actions";
-
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import './general.css'
+import { addNewContact, deleteContact, setFilter } from "../redux/actions";
 
 const App = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.contacts); // Update this line
+  const filter = useSelector(state => state.contacts.filter); // Update this line
   const dispatch = useDispatch();
   
-  const [filter, setFilter] = useState('');
-
   const handleAddContact = (contact) => {
     const isDuplicate = contacts.some(
       (existingContact) => existingContact.name === contact.name
@@ -23,7 +22,7 @@ const App = () => {
       return alert("Contact already exists!");
     } 
     
-    dispatch(addNewContact({ name: contact.name, phone: contact.phone, id: contact.id }));
+    dispatch(addNewContact({ name: contact.name, number: contact.number, id: contact.id }));
   };
 
   const handleDeleteContact = (id) => {
@@ -31,17 +30,8 @@ const App = () => {
   };
 
   const handleFilterChange = (filterValue) => {
-    setFilter(filterValue.toLowerCase());
+    dispatch(setFilter(filterValue.toLowerCase()));
   };
-
-  // useEffect(() => {
-  //   const storedContacts = localStorage.getItem('contacts');
-  //   const parsedContacts = JSON.parse(storedContacts);
-
-  //   if (parsedContacts) {
-  //     setContacts(parsedContacts);
-  //   }
-  // }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -61,7 +51,7 @@ const App = () => {
             marginBottom: 0,
           }}
         />
-        <ContactForm id='1' onAddContact={handleAddContact} />
+        <ContactForm onAddContact={handleAddContact} />
       </div>
 
       <PhonebookTitle

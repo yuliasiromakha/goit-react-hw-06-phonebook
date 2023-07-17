@@ -1,34 +1,22 @@
-export const addNewContact = ({name, phone, id}) => {
+export const addNewContact = ({ name, number, id }) => {
     return {
-        type:'ADD_CONTACT',
-        payload: {
-            id,
-            name, 
-            phone
-        }
+      type: 'ADD_CONTACT',
+      payload: {
+        id,
+        name, 
+        number
+      }
     };
-}
-
-// export const deleteContact = ({name, phone, id}) => {
-//     return {
-//         type:'DELETE_CONTACT',
-//         payload: {
-//             id,
-//             name, 
-//             phone
-//         }
-//     };
-// }
-
-export const deleteContact = (id) => {
+  };
+  
+  export const deleteContact = (id) => {
     return {
       type: "DELETE_CONTACT",
       payload: { id },
     };
   };
   
-
-export const setFilter = (filterValue) => {
+  export const setFilter = (filterValue) => {
     return {
       type: "SET_FILTER",
       payload: filterValue,
