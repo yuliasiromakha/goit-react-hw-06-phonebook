@@ -1,10 +1,14 @@
-import React from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-const FilterContact = ({ filter, onFilterChange }) => {
+import { setFilter } from 'redux/actions'
+
+const FilterContact = ({ filter }) => {
+  const dispatch = useDispatch();
+
   const handleInputChange = (event) => {
     const { value } = event.target;
-    onFilterChange(value.toLowerCase());
+    dispatch(setFilter(value.toLowerCase()));
   };
 
   return (
@@ -21,7 +25,6 @@ const FilterContact = ({ filter, onFilterChange }) => {
 
 FilterContact.propTypes = {
   filter: PropTypes.string, 
-  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default FilterContact;

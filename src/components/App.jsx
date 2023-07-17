@@ -10,8 +10,8 @@ import FilterContact from "./FilterContact/FilterContact";
 import { addNewContact, deleteContact, setFilter } from "../redux/actions";
 
 const App = () => {
-  const contacts = useSelector(state => state.contacts.contacts); // Update this line
-  const filter = useSelector(state => state.contacts.filter); // Update this line
+  const contacts = useSelector(state => state.contacts.contacts);
+  const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
   
   const handleAddContact = (contact) => {
@@ -62,12 +62,9 @@ const App = () => {
         }}
       />
 
-      <FilterContact
-        filter={filter}
-        onFilterChange={handleFilterChange}
-      />
+      <FilterContact filter={filter} onFilterChange={handleFilterChange} />
 
-      <ContactList contacts={filteredContacts}  onDeleteContact={handleDeleteContact}/>
+      <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact} />
     </div>
   );
 }
