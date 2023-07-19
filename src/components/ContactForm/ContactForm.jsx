@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewContact } from "redux/actions";
 import PhonebookTitle from "../PhonebookTitle/PhonebookTitle";
 import { nanoid } from "nanoid";
@@ -8,21 +8,30 @@ import AddContactButton from "components/AddContactButton/AddContactButton";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const contacts = useSelector((state) => state.contacts.contacts);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'name') {
+    if (name === "name") {
       setName(value);
-    } else if (name === 'number') {
+    } else if (name === "number") {
       setNumber(value);
     }
   };
 
   const onSubmitForm = (event) => {
     event.preventDefault();
+
+    const existingContact = contacts.find(
+      (contact) => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (existingContact) {
+      alert(`Contact ${name} already exists!`);
+      return;
+    }
 
     const contact = {
       id: nanoid(),
@@ -31,9 +40,9 @@ const ContactForm = () => {
     };
 
     dispatch(addNewContact(contact));
-    setName('');
-    setNumber('');
-  }
+    setName("");
+    setNumber("");
+  };
 
   return (
     <div>
@@ -64,10 +73,10 @@ const ContactForm = () => {
       </form>
     </div>
   );
-}
+};
 
 ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
+  onAddContact: PropTypes.func,
 };
 
 export default ContactForm;
