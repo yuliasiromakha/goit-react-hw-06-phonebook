@@ -3,7 +3,7 @@ export const addNewContact = ({ name, number, id }) => {
       type: 'ADD_CONTACT',
       payload: {
         id,
-        name, 
+        name,
         number
       }
     };
@@ -23,3 +23,9 @@ export const addNewContact = ({ name, number, id }) => {
     };
   };
   
+  export const setContacts = (contacts) => {
+    return {
+      type: "SET_CONTACTS",
+      payload: contacts,
+    };
+  };

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
+import { useDispatch } from "react-redux";
+import { addNewContact } from "redux/actions";
 import PhonebookTitle from "../PhonebookTitle/PhonebookTitle";
 import { nanoid } from "nanoid";
 import AddContactButton from "components/AddContactButton/AddContactButton";
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -28,7 +30,7 @@ const ContactForm = ({ onAddContact }) => {
       number,
     };
 
-    onAddContact(contact)
+    dispatch(addNewContact(contact));
     setName('');
     setNumber('');
   }

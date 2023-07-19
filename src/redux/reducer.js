@@ -1,7 +1,7 @@
 const initialState = {
     contacts: [],
-    filter: ""
-  }
+    filter: "",
+  };
   
   const contactReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -24,7 +24,7 @@ const initialState = {
           ...state,
           filter: action.payload,
         };
-  
+
       default:
         return state;
     }

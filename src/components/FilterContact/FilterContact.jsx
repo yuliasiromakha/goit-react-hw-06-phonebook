@@ -1,9 +1,8 @@
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { setFilter } from "redux/actions";
 
-import { setFilter } from 'redux/actions'
-
-const FilterContact = ({ filter }) => {
+const FilterContact = () => {
   const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
@@ -16,7 +15,6 @@ const FilterContact = ({ filter }) => {
       <input
         type="text"
         placeholder="Search contacts"
-        value={filter}
         onChange={handleInputChange}
       />
     </div>
@@ -24,7 +22,7 @@ const FilterContact = ({ filter }) => {
 };
 
 FilterContact.propTypes = {
-  filter: PropTypes.string, 
+  filter: PropTypes.string,
 };
 
 export default FilterContact;
