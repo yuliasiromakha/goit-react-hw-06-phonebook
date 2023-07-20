@@ -6,7 +6,8 @@ import PhonebookTitle from "./PhonebookTitle/PhonebookTitle";
 import ContactForm from "./ContactForm/ContactForm";
 import FilterContact from "./FilterContact/FilterContact";
 import ContactList from "./ContactList/ContactList";
-import { setContacts } from "redux/actions";
+// import { setContacts } from "redux/actions";
+import { setContacts } from "redux/reducer";
 
 const App = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact } from "redux/actions";
+import { deleteContact } from "redux/reducer";
 
 const ContactList = () => {
   const contacts = useSelector((state) => state.contacts.contacts);
@@ -9,6 +9,7 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = (id) => {
+    console.log('this is handleDeleteContact');
     dispatch(deleteContact(id));
   };
 
@@ -41,7 +42,7 @@ const ContactList = () => {
 };
 
 ContactList.propTypes = {
-  onDeleteContact: PropTypes.func,
+  handleDeleteContact: PropTypes.func,
 };
 
 export default ContactList;
