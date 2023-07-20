@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-// import PropTypes from "prop-types";
 import { setFilter } from "redux/actions";
 
 const FilterContact = () => {
@@ -20,7 +19,5 @@ const FilterContact = () => {
     </div>
   );
 };
-
-// FilterContact.propTypes = {};
 
 export default FilterContact;
