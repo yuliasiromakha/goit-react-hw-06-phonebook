@@ -1,11 +1,11 @@
-export const addNewContact = ({ name, number, id }) => {
+export const addContact = ({ name, number, id }) => {
   return {
-    type: 'ADD_CONTACT',
+    type: "ADD_CONTACT",
     payload: {
       id,
       name,
-      number
-    }
+      number,
+    },
   };
 };
 
