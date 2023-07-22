@@ -10,6 +10,7 @@ const contactSlice = createSlice({
     addContact: (state, action) => {
       console.log('added contact');
       state.contacts.push(action.payload);
+      // state.contacts = action.payload;
     },
     deleteContact: (state, action) => {
       console.log('deleted contact');
@@ -19,12 +20,9 @@ const contactSlice = createSlice({
         console.log('this is setfilter');
       state.filter = action.payload;
     },
-    setContacts: (state, action) => {
-      state.contacts = action.payload;
-    },
   },
 });
 
-export const { addContact, setFilter, deleteContact, setContacts } = contactSlice.actions;
+export const { addContact, setFilter, deleteContact } = contactSlice.actions;
 
 export default contactSlice.reducer;
